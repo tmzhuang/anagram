@@ -14,7 +14,6 @@ public class AnagramTest {
         assertThat(detector.match(Arrays.asList("hello", "world", "zombies", "pants"))).isEmpty();
     }
 
-    @Ignore
     @Test
     public void testSimpleAnagram() {
         Anagram detector = new Anagram("ant");
@@ -22,7 +21,6 @@ public class AnagramTest {
         assertThat(anagram).containsExactly("tan");
     }
 
-    @Ignore
     @Test
     public void testDetectMultipleAnagrams() {
         Anagram detector = new Anagram("master");
@@ -30,7 +28,6 @@ public class AnagramTest {
         assertThat(anagrams).contains("maters", "stream");
     }
 
-    @Ignore
     @Test
     public void testDoesNotConfuseDifferentDuplicates() {
         Anagram detector = new Anagram("galea");
@@ -38,7 +35,6 @@ public class AnagramTest {
         assertThat(anagrams).isEmpty();
     }
 
-    @Ignore
     @Test
     public void testIdenticalWordIsNotAnagram() {
         Anagram detector = new Anagram("corn");
