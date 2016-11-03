@@ -6,7 +6,7 @@ public class Anagram {
 
   public Anagram(String baseString) {
     this.baseString = baseString.toLowerCase();
-    this.letterCounts = countLetters(baseString);
+    this.letterCounts = countLetters(this.baseString);
   }
 
   public List<String> match(List wordList) {
@@ -20,7 +20,8 @@ public class Anagram {
   }
 
   private boolean isAnagram(String word) {
-    if (this.baseString.equals(word.toLowerCase())) return false;
+    word = word.toLowerCase();
+    if (this.baseString.equals(word)) return false;
     Map<Character, Integer> letterCounts = countLetters(word);
     return this.letterCounts.equals(letterCounts);
     
@@ -31,7 +32,7 @@ public class Anagram {
     char[] letterArray = string.toCharArray();
     for(char letter : letterArray) {
       if(letterCounts.get(letter) == null) {
-        letterCounts.put(letter, 0);
+        letterCounts.put(letter, 1);
       } else {
         letterCounts.put(letter, letterCounts.get(letter) + 1);
       }
