@@ -2,8 +2,10 @@ import java.util.*;
 
 public class Anagram {
   private Map<Character, Integer> letterCounts;
+  private String baseString;
 
   public Anagram(String baseString) {
+    this.baseString = baseString.toLowerCase();
     this.letterCounts = countLetters(baseString);
   }
 
@@ -11,11 +13,17 @@ public class Anagram {
     List<String> result = new ArrayList<String>();
     for(Object o: wordList) {
       String word = (String)o;
-      Map<Character, Integer> letterCounts = countLetters(word);
-      if(this.letterCounts.equals(letterCounts)) result.add(word);
+      if(isAnagram(word)) result.add(word);
     }
 
     return result;
+  }
+
+  private boolean isAnagram(String word) {
+    if (this.baseString.equals(word.toLowerCase())) return false;
+    Map<Character, Integer> letterCounts = countLetters(word);
+    return this.letterCounts.equals(letterCounts);
+    
   }
 
   private static Map<Character, Integer> countLetters(String string) {
